@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AlertCircle } from 'lucide-react';
-import { Alert, AlertDescription, AlertTitle } from './components/ui/alert';
+import { Alert, AlertTitle } from './components/ui/alert';
 
 const COLORS = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
 
