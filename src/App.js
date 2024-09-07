@@ -3,7 +3,7 @@ import { AlertCircle } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from './components/ui/alert';
 
 const COLORS = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
-// const COLORS = ['red'];
+
 const CODE_LENGTH = 4;
 const MAX_ATTEMPTS = 10;
 
@@ -119,6 +119,7 @@ const MastermindGame = () => {
 
   useEffect(() => {
     setSecretCode(generateSecretCode());
+
     // setGuesses([{"colors":["bg-red-500","bg-blue-500","bg-green-500","bg-purple-500"],"results":["correct","wrongPosition","wrongPosition","incorrect"]},{"colors":["bg-red-500","bg-blue-500","bg-green-500","bg-yellow-500"],"results":["correct","wrongPosition","wrongPosition","incorrect"]},{"colors":["bg-red-500","bg-blue-500","bg-green-500","bg-yellow-500"],"results":["correct","wrongPosition","wrongPosition","incorrect"]},{"colors":["bg-red-500","bg-blue-500","bg-green-500","bg-yellow-500"],"results":["correct","wrongPosition","wrongPosition","incorrect"]},{"colors":["bg-red-500","bg-blue-500","bg-green-500","bg-yellow-500"],"results":["correct","wrongPosition","wrongPosition","incorrect"]},{"colors":["bg-red-500","bg-blue-500","bg-green-500","bg-yellow-500"],"results":["correct","wrongPosition","wrongPosition","incorrect"]},{"colors":["bg-red-500","bg-blue-500","bg-green-500","bg-yellow-500"],"results":["correct","wrongPosition","wrongPosition","incorrect"]},{"colors":["bg-red-500","bg-blue-500","bg-green-500","bg-yellow-500"],"results":["correct","wrongPosition","wrongPosition","incorrect"]},{"colors":["bg-red-500","bg-blue-500","bg-green-500","bg-yellow-500"],"results":["correct","wrongPosition","wrongPosition","incorrect"]},{"colors":["bg-red-500","bg-blue-500","bg-green-500","bg-yellow-500"],"results":["correct","wrongPosition","wrongPosition","incorrect"]}])
   }, []);
 
@@ -196,7 +197,7 @@ const MastermindGame = () => {
 
   return (
     <div className="container mx-auto flex flex-col items-center gap-4 main">
-      {/* <div className='w-[1px] h-screen fixed bg-black'></div> */}
+
       <div className='w-full max-w-2xl grid grid-cols-[1fr_auto_1fr]'>
         <div className=''></div>
         <a href="https://en.wikipedia.org/wiki/Mastermind_(board_game)" target="_blank" rel="noreferrer">
@@ -249,14 +250,16 @@ const MastermindGame = () => {
       </SimpleModal>)}
       {gameOver && (
         <SimpleModal onClick={() => setGameOver(false)} small={true}>
-          <Alert className="bg-white p-4 rounded-lg">
+          <Alert className="bg-white p-4 rounded-lg flex flex-col">
             <AlertCircle className="h-4 w-4" />
             <AlertTitle>{win ? 'Congratulations!' : 'Game Over'}</AlertTitle>
-            <AlertDescription>
-              {win
+            <div>
+                {win
                 ? `You guessed the secret code in ${guesses.length} attempt${guesses.length === 1 ? '' : 's'}!`
-                : `You've run out of attempts. The secret code was: ${secretCode.join(', ')}`}
-            </AlertDescription>
+                : <><div>You've run out of attempts.</div><div className='mb-4'>The secret code was:</div></>}
+                {win ? null : <Row key={0} guess={secretCode.map(color=>`bg-${color}-500`)}  pegResults={[]} isCurrentGuess={true} />
+                }
+            </div>
           </Alert>
         </SimpleModal>
       )}
