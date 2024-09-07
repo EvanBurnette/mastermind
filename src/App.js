@@ -199,7 +199,7 @@ const MastermindGame = () => {
       {/* <div className='w-[1px] h-screen fixed bg-black'></div> */}
       <div className='w-full max-w-2xl grid grid-cols-[1fr_auto_1fr]'>
         <div className=''></div>
-        <a href="https://en.wikipedia.org/wiki/Mastermind_(board_game)" target="_blank">
+        <a href="https://en.wikipedia.org/wiki/Mastermind_(board_game)" target="_blank" rel="noreferrer">
           <h1 className="text-3xl font-bold text-center mt-2">Mastermind</h1>
         </a>
         <button
