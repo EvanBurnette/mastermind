@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/repository/static/css/main.4e65ed5c.css",
-    "main.js": "/repository/static/js/main.6ab05428.js",
-    "static/js/453.4dec8a1a.chunk.js": "/repository/static/js/453.4dec8a1a.chunk.js",
-    "index.html": "/repository/index.html",
-    "main.4e65ed5c.css.map": "/repository/static/css/main.4e65ed5c.css.map",
-    "main.6ab05428.js.map": "/repository/static/js/main.6ab05428.js.map",
-    "453.4dec8a1a.chunk.js.map": "/repository/static/js/453.4dec8a1a.chunk.js.map"
+    "main.css": "/mastermind/static/css/main.4e65ed5c.css",
+    "main.js": "/mastermind/static/js/main.f22a42d1.js",
+    "static/js/453.4dec8a1a.chunk.js": "/mastermind/static/js/453.4dec8a1a.chunk.js",
+    "index.html": "/mastermind/index.html",
+    "main.4e65ed5c.css.map": "/mastermind/static/css/main.4e65ed5c.css.map",
+    "main.f22a42d1.js.map": "/mastermind/static/js/main.f22a42d1.js.map",
+    "453.4dec8a1a.chunk.js.map": "/mastermind/static/js/453.4dec8a1a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4e65ed5c.css",
-    "static/js/main.6ab05428.js"
+    "static/js/main.f22a42d1.js"
   ]
 }
