@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AlertCircle } from 'lucide-react';
-import { Alert, AlertTitle } from './components/ui/alert';
+import Confetti from 'react-confetti-boom';
 
 const COLORS = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
 
@@ -120,7 +119,6 @@ const MastermindGame = () => {
   useEffect(() => {
     setSecretCode(generateSecretCode());
 
-    // setGuesses([{"colors":["bg-red-500","bg-blue-500","bg-green-500","bg-purple-500"],"results":["correct","wrongPosition","wrongPosition","incorrect"]},{"colors":["bg-red-500","bg-blue-500","bg-green-500","bg-yellow-500"],"results":["correct","wrongPosition","wrongPosition","incorrect"]},{"colors":["bg-red-500","bg-blue-500","bg-green-500","bg-yellow-500"],"results":["correct","wrongPosition","wrongPosition","incorrect"]},{"colors":["bg-red-500","bg-blue-500","bg-green-500","bg-yellow-500"],"results":["correct","wrongPosition","wrongPosition","incorrect"]},{"colors":["bg-red-500","bg-blue-500","bg-green-500","bg-yellow-500"],"results":["correct","wrongPosition","wrongPosition","incorrect"]},{"colors":["bg-red-500","bg-blue-500","bg-green-500","bg-yellow-500"],"results":["correct","wrongPosition","wrongPosition","incorrect"]},{"colors":["bg-red-500","bg-blue-500","bg-green-500","bg-yellow-500"],"results":["correct","wrongPosition","wrongPosition","incorrect"]},{"colors":["bg-red-500","bg-blue-500","bg-green-500","bg-yellow-500"],"results":["correct","wrongPosition","wrongPosition","incorrect"]},{"colors":["bg-red-500","bg-blue-500","bg-green-500","bg-yellow-500"],"results":["correct","wrongPosition","wrongPosition","incorrect"]},{"colors":["bg-red-500","bg-blue-500","bg-green-500","bg-yellow-500"],"results":["correct","wrongPosition","wrongPosition","incorrect"]}])
   }, []);
 
   const handleColorSelect = (color) => {
@@ -197,7 +195,6 @@ const MastermindGame = () => {
 
   return (
     <div className="container mx-auto flex flex-col items-center gap-4 main">
-
       <div className='w-full max-w-2xl grid grid-cols-[1fr_auto_1fr]'>
         <div className=''></div>
         <a href="https://en.wikipedia.org/wiki/Mastermind_(board_game)" target="_blank" rel="noreferrer">
@@ -250,9 +247,9 @@ const MastermindGame = () => {
       </SimpleModal>)}
       {gameOver && (
         <SimpleModal onClick={() => setGameOver(false)} small={true}>
-          <Alert className="bg-white p-4 rounded-lg flex flex-col">
-            <AlertCircle className="h-4 w-4" />
-            <AlertTitle>{win ? 'Congratulations!' : 'Game Over'}</AlertTitle>
+          <div className="bg-white p-4 rounded-lg flex flex-col gap-2">
+            {/* <AlertCircle className="h-4 w-4" /> */}
+            <div className='text-4xl text-purple-500 text-neutral-900 text-center'>{win ? '🎉 You Won! 🎉' : 'Game Over'}</div>
             <div>
                 {win
                 ? `You guessed the secret code in ${guesses.length} attempt${guesses.length === 1 ? '' : 's'}!`
@@ -260,9 +257,10 @@ const MastermindGame = () => {
                 {win ? null : <Row key={0} guess={secretCode.map(color=>`bg-${color}-500`)}  pegResults={[]} isCurrentGuess={true} />
                 }
             </div>
-          </Alert>
+          </div>
         </SimpleModal>
       )}
+      {win && gameOver ? <Confetti className='absolute top-0' x={0.5} y={0.7} mode="boom" particleCount={100} colors={['#FF0000', '#0000FF','#00FF00','#FFFF00','#A855F7','#F97316']} shapeSize={20} launchSpeed={2}/> : null}
     </div>
   );
 };
